@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 42 30% 98%;
+    --foreground: 20 10% 25%;
+    --card: 42 30% 98%;
+    --card-foreground: 20 10% 25%;
+    --popover: 42 30% 98%;
+    --popover-foreground: 20 10% 25%;
+    --primary: 35 40% 71%;
+    --primary-foreground: 20 10% 25%;
+    --secondary: 0 0% 70%;
+    --secondary-foreground: 20 10% 25%;
+    --muted: 35 20% 90%;
+    --muted-foreground: 20 5% 45%;
+    --accent: 10 25% 63%;
+    --accent-foreground: 42 30% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 42 30% 98%;
+    --border: 20 10% 85%;
+    --input: 20 10% 85%;
+    --ring: 35 40% 71%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 20 15% 15%;
+    --foreground: 35 25% 88%;
+    --card: 20 15% 15%;
+    --card-foreground: 35 25% 88%;
+    --popover: 20 15% 15%;
+    --popover-foreground: 35 25% 88%;
+    --primary: 35 25% 60%;
+    --primary-foreground: 20 5% 15%;
+    --secondary: 0 0% 40%;
+    --secondary-foreground: 35 25% 88%;
+    --muted: 20 10% 25%;
+    --muted-foreground: 35 15% 75%;
+    --accent: 10 25% 50%;
+    --accent-foreground: 42 30% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 35 25% 88%;
+    --border: 20 15% 25%;
+    --input: 20 15% 25%;
+    --ring: 35 25% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border scroll-smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer utilities {
+  .section-padding {
+    @apply px-4 md:px-12 lg:px-24 py-16 md:py-24;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-6 relative inline-block;
+  }
+  
+  .section-title::after {
+    content: "";
+    @apply absolute w-2/3 h-1 bg-accent bottom-0 left-0 -mb-2 rounded-full;
+  }
+  
+  .reveal {
+    @apply opacity-0;
+  }
+  
+  .reveal.active {
+    @apply animate-fade-in;
+  }
+}
+
+/* Progress bar styling - kept for backward compatibility */
+.progress-bar {
+  @apply w-full h-3 bg-secondary rounded-full overflow-hidden;
+}
+
+.progress-bar-value {
+  @apply h-full rounded-full transition-all duration-1000;
+  background-image: linear-gradient(to right, hsl(var(--primary)/0.8), hsl(var(--accent)/0.9));
+}
+
+/* Hover effect for project cards */
+.project-card {
+  @apply transition-all duration-300;
+}
+
+.project-card:hover {
+  @apply -translate-y-2 shadow-lg;
+}
+
+/* Flip card styling */
+.flip-card {
+  @apply bg-transparent h-[220px] perspective-1000 relative;
+}
+
+.flip-card-inner {
+  @apply relative w-full h-full transition-transform duration-500 transform-style-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+  @apply rotate-y-180;
+}
+
+.flip-card-front,
+.flip-card-back {
+  @apply absolute w-full h-full backface-hidden shadow-md rounded-lg;
+}
+
+.flip-card-front {
+  @apply bg-gradient-to-br from-secondary/30 to-secondary/80 p-4 flex flex-col justify-between;
+}
+
+.flip-card-back {
+  @apply rotate-y-180 bg-gradient-to-br from-primary/90 to-primary p-4 flex flex-col justify-center;
+}
+
+/* Perspective and 3D transform utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Skill icon styling */
+.skill-icon {
+  @apply text-primary h-10 w-10 mx-auto mb-3 transition-all duration-300;
+}
+
+.flip-card:hover .skill-icon {
+  @apply scale-110;
+}
+
+/* Soft transitions between sections */
+section {
+  @apply transition-colors duration-500;
+}
+
+/* Refined typography */
+h1, h2, h3, h4, h5, h6 {
+  @apply font-medium tracking-tight;
+}
